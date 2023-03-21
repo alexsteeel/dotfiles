@@ -1,20 +1,20 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
             "command": "unbound",
             "keys": "ctrl+v"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "commandPalette"
             },
             "keys": "ctrl+shift+p"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -29,7 +29,7 @@
             "command": "paste"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -45,16 +45,16 @@
     "experimental.rendering.forceFullRepaint": true,
     "experimental.rendering.software": true,
     "launchMode": "maximized",
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "antialiasingMode": "cleartype",
             "bellStyle": "none",
             "closeOnExit": "graceful",
             "cursorShape": "bar",
             "experimental.retroTerminalEffect": false,
-            "font": 
+            "font":
             {
                 "face": "MesloLGS NF",
                 "size": 10
@@ -62,7 +62,7 @@
             "hidden": false,
             "snapOnInput": true
         },
-        "list": 
+        "list":
         [
             {
                 "colorScheme": "Tango Dark",
@@ -121,11 +121,11 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "name": "Campbell",
-			"background": "#0C0C0C",
+            "background": "#0C0C0C",
             "black": "#0C0C0C",
             "blue": "#0037DA",
             "brightBlack": "#767676",
@@ -147,7 +147,7 @@
             "yellow": "#C19C00"
         },
         {
-			"name": "Campbell Powershell",
+            "name": "Campbell Powershell",
             "background": "#012456",
             "black": "#0C0C0C",
             "blue": "#0037DA",
@@ -170,7 +170,7 @@
             "yellow": "#C19C00"
         },
         {
-			"name": "Tango Dark",
+            "name": "Tango Dark",
             "background": "#000000",
             "black": "#000000",
             "blue": "#3465A4",
@@ -185,7 +185,7 @@
             "cursorColor": "#FFFFFF",
             "cyan": "#06989A",
             "foreground": "#D3D7CF",
-            "green": "#4E9A06",            
+            "green": "#4E9A06",
             "purple": "#75507B",
             "red": "#CC0000",
             "selectionBackground": "#FFFFFF",
