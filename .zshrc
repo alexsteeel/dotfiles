@@ -17,6 +17,7 @@ export GOPATH=~/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.dotnet/tools/
 export PATH=$PATH:/opt/mssql-tools/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 CDPATH=$HOME:$HOME/repo
 
