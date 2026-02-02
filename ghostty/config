@@ -1,0 +1,43 @@
+# === Font ===
+font-family = MesloLGS NF
+font-size = 10
+
+# === Terminal ===
+term = xterm-256color
+
+# === Shell Integration ===
+shell-integration = zsh
+# no-title: prevents overwriting tmux pane titles
+shell-integration-features = cursor,sudo,no-title
+
+# === Theme ===
+theme = Dracula
+
+# === Appearance ===
+background-opacity = 1
+window-padding-x = 4
+window-padding-y = 4
+gtk-titlebar = false
+window-decoration = false
+
+# === Cursor ===
+cursor-style = block
+cursor-style-blink = false
+
+# === Scrollback ===
+scrollback-limit = 10000
+mouse-scroll-multiplier = 1
+
+# === Images (Kitty graphics protocol) ===
+image-storage-limit = 320000000
+
+# === Clipboard ===
+copy-on-select = clipboard
+clipboard-read = allow
+clipboard-paste-protection = false
+
+# Pass Ctrl+V to application (for image paste in Claude Code)
+keybind = ctrl+v=unbind
+
+# URL links with Shift+Click (works in tmux)
+link-url = true
