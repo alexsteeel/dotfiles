@@ -3,7 +3,7 @@ font-family = MesloLGS NF
 font-size = 10
 
 # === Terminal ===
-term = xterm-256color
+term = xterm-ghostty
 
 # === Shell Integration ===
 shell-integration = zsh
