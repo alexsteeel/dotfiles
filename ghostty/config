@@ -39,5 +39,8 @@ clipboard-paste-protection = false
 # Pass Ctrl+V to application (for image paste in Claude Code)
 keybind = ctrl+v=unbind
 
+# Rename current tab
+keybind = ctrl+shift+r=prompt_surface_title
+
 # URL links with Shift+Click (works in tmux)
 link-url = true

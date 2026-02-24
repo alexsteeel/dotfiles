@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal dotfiles for a Linux terminal environment: Ghostty + tmux + zsh + vim. All configs share the Dracula theme.
+Personal dotfiles for a Linux terminal environment: Ghostty + tmux + zsh + vim + yazi. All configs share the Dracula theme.
 
 ## Deployment
 
@@ -16,6 +16,7 @@ Files are symlinked to their target locations manually:
 | `.tmux.conf` | `~/.tmux.conf` |
 | `.vimrc` | `~/.vimrc` |
 | `ghostty/config` | `~/.config/ghostty/config` |
+| `yazi/yazi.toml` | `~/.config/yazi/yazi.toml` |
 
 ## Cross-config Dependencies
 
