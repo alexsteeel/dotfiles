@@ -1,0 +1,130 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "proxy-dns",
+        "type": "https",
+        "server": "dns.google",
+        "server_port": 443,
+        "detour": "proxy"
+      },
+      {
+        "tag": "local-dns",
+        "type": "udp",
+        "server": "1.1.1.1",
+        "server_port": 53
+      }
+    ],
+    "rules": [
+      {
+        "domain_suffix": [
+          "codeium.com",
+          "jetbrains.com",
+          "jetbrains.ai",
+          "cloudflare.com",
+          "cloudfront.net",
+          "chatgpt.com",
+          "openai.com",
+          "anthropic.com"
+        ],
+        "domain": [
+          "open-vsx.org",
+          "mobile.events.data.microsoft.com",
+          "o4507463137361920.ingest.us.sentry.io",
+          "clientservices.googleapis.com",
+          "daily-cloudcode-pa.googleapis.com"
+        ],
+        "server": "proxy-dns"
+      }
+    ],
+    "final": "local-dns"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "address": ["172.19.0.1/30"],
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": false
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "socks",
+      "tag": "proxy",
+      "server": "127.0.0.1",
+      "server_port": 9888
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "ip_is_private": true,
+        "action": "route",
+        "outbound": "direct"
+      },
+      {
+        "process_name": [
+          "pycharm",
+          "rider",
+          "datagrip",
+          "goland",
+          "writerside",
+          "dataspell",
+          "jetbrains-toolbox",
+          "language_server_linux_x64",
+          "claude",
+          "codex",
+          "gemini",
+          "antigravity"
+        ],
+        "process_path": [
+          "/usr/share/antigravity/antigravity",
+          "/usr/share/antigravity/resources/app/extensions/antigravity/bin/language_server_linux_x64"
+        ],
+        "action": "route",
+        "outbound": "proxy"
+      },
+      {
+        "domain_suffix": [
+          "codeium.com",
+          "jetbrains.com",
+          "jetbrains.ai",
+          "cloudflare.com",
+          "cloudfront.net",
+          "chatgpt.com",
+          "openai.com",
+          "anthropic.com"
+        ],
+        "domain": [
+          "open-vsx.org",
+          "mobile.events.data.microsoft.com",
+          "o4507463137361920.ingest.us.sentry.io",
+          "clientservices.googleapis.com",
+          "daily-cloudcode-pa.googleapis.com"
+        ],
+        "action": "route",
+        "outbound": "proxy"
+      }
+    ],
+    "final": "direct",
+    "auto_detect_interface": true,
+    "default_domain_resolver": "local-dns"
+  }
+}
