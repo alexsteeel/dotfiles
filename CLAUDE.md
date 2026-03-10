@@ -8,7 +8,22 @@ Personal dotfiles for a Linux terminal environment: Ghostty + tmux + zsh + vim +
 
 ## Deployment
 
-Files are symlinked to their target locations manually:
+Bootstrap order: sing-box (proxy) → claude code → остальные конфиги.
+
+### 1. Bootstrap (вручную, до claude code)
+
+| Source | Target | Notes |
+|--------|--------|-------|
+| `sing-box/config.json` | `/etc/sing-box/config.json` | `sudo cp`, заменить local-dns на корпоративный |
+
+```bash
+curl -fsSL https://sing-box.app/install.sh | sh
+sudo cp sing-box/config.json /etc/sing-box/config.json
+# отредактировать local-dns в /etc/sing-box/config.json
+sudo systemctl enable --now sing-box
+```
+
+### 2. Остальное (symlinks)
 
 | Source | Target |
 |--------|--------|
