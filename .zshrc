@@ -31,6 +31,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# SSH agent socket (gnome-keyring) — без этого SSH-сессии не наследуют
+# сокет агента из графической сессии, и autossh запрашивает passphrase
+# при каждом переподключении
+export SSH_AUTH_SOCK="/run/user/$(id -u)/keyring/.ssh"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
