@@ -31,10 +31,23 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# SSH agent socket (gnome-keyring) — без этого SSH-сессии не наследуют
+# SSH agent socket (gcr-ssh-agent) — без этого SSH-сессии не наследуют
 # сокет агента из графической сессии, и autossh запрашивает passphrase
-# при каждом переподключении
-export SSH_AUTH_SOCK="/run/user/$(id -u)/keyring/.ssh"
+# при каждом переподключении. Современный GNOME использует gcr-ssh-agent
+# (socket-activated), а не gnome-keyring-daemon для SSH.
+_GCR_SSH_SOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/gcr/ssh"
+
+# Inside tmux: sync with global env (updated on attach for mosh/ssh reconnect)
+if [ -n "$TMUX" ]; then
+  eval "$(tmux show-environment -s SSH_AUTH_SOCK 2>/dev/null)"
+fi
+
+# Fallback to gcr-ssh-agent if current socket is missing/invalid
+if [ ! -S "$SSH_AUTH_SOCK" ] && [ -S "$_GCR_SSH_SOCK" ]; then
+  export SSH_AUTH_SOCK="$_GCR_SSH_SOCK"
+  [ -n "$TMUX" ] && tmux set-environment -g SSH_AUTH_SOCK "$_GCR_SSH_SOCK" 2>/dev/null
+fi
+unset _GCR_SSH_SOCK
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
